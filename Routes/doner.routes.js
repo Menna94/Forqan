@@ -9,9 +9,13 @@ const {
     deleteDoner
 } = require('../Controllers/doner.controller');
 
+const Doner = require('../Controllers/doner.controller');
+const filter = require('../Middlewares/advancedFilters.middleware');
+
+
 //Fetch All Doners
 //GET /api/v1/doners
-router.get('/', getDoners);
+router.get('/', filter(Doner) , getDoners);
 
 //Fetch Single Doner
 //GET /api/v1/doner/:id

@@ -54,33 +54,33 @@ const filter = (model) => async (req, res, next) => {
 
     if (endIndex < total) {
         pagination.next = {
-        page: page + 1,
-        limit,
+            page: page + 1,
+            limit,
         };
     }
     if (startIndex > 0) {
         pagination.prev = {
-        page: page - 1,
-        limit,
+            page: page - 1,
+            limit,
         };
     }
 
-//   const results = await query;
+    const results = await query;
 
-//   if (!results) {
-//     return res.status(404).send({
-//       success: false,
-//       msg: "Couldnot Fetch Data!",
-//       data: null,
-//     });
-//   }
-//   return res.status(200).send({
-//     success: true,
-//     msg: "Data Fetched Successfully!",
-//     pagination,
-//     count: results.length,
-//     data: results,
-//   });
+    if (!results) {
+        return res.status(404).send({
+        success: false,
+        msg: "Couldnot Fetch Data!",
+        data: null,
+        });
+    }
+    return res.status(200).send({
+        success: true,
+        msg: "Data Fetched Successfully!",
+        pagination,
+        count: results.length,
+        data: results,
+    });
 
     
     next();
