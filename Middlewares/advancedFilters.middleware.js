@@ -50,7 +50,20 @@ const filter = (model) => async (req, res, next) => {
 
     query = query.skip(startIndex).limit(limit);
 
+    //==DEMO==//
+    // "pagination": {
+    //     "next": {
+    //         "page": 4, -> ~Current Page
+    //         "limit": 3 -> ~Data Displayed
+    //     },
+    //     "prev": {
+    //         "page": 2,
+    //         "limit": 3
+    //     }
+    // },
+
     const pagination = {};
+    
 
     if (endIndex < total) {
         pagination.next = {
