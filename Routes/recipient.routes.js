@@ -8,10 +8,12 @@ const {
     updateRecipient,
     deleteRecipient
 } = require('../Controllers/recipient.controller');
+const filter = require('../Middlewares/advancedFilters.middleware');
+const Recipient = require('../Models/recipient.model');
 
 //Fetch Recipients
 //GET /api/v1/recipients
-router.get('/', getAllRecipients);
+router.get('/', filter(Recipient), getAllRecipients);
 
 //Fetch Single Recipient
 //GET /api/v1/recipients/:id
